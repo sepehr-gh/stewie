@@ -30,7 +30,7 @@ class Router{
             unset($path_parts_array[0]);
             $path_parts_array = array_values($path_parts_array);
             $count = count($path_parts_array);
-            if ($count == count(self::$call_parts) || ($count == count(self::$call_parts) - 1 && empty($path_parts_array[$count + 1]))) {
+            if ($count == count(self::$call_parts) || ($count == count(self::$call_parts) - 1 && empty(self::$call_parts[$count]))) {
                 $true_url = true;
                 $parameter = null;
                 if ($count == count(self::$call_parts) + 1 && empty($path_parts_array[$count - 1])) {
@@ -69,7 +69,7 @@ class Router{
             unset($path_parts_array[0]);
             $path_parts_array = array_values($path_parts_array);
             $count = count($path_parts_array);
-            if ($count == count(self::$call_parts) || ($count == count(self::$call_parts) - 1 && empty($path_parts_array[$count + 1]))) {
+            if ($count == count(self::$call_parts) || ($count == count(self::$call_parts) - 1 && empty(self::$call_parts[$count]))) {
                 $true_url = true;
                 $parameter = null;
                 if ($count == count(self::$call_parts) + 1 && empty($path_parts_array[$count - 1])) {
