@@ -41,10 +41,31 @@ class Router{
         }
     }
 
-    private function filter($filters){
-
+    private static function filter($filters){
+        $filters = explode("|",ucwords(str_replace(" ","",$filters)));
+        include_once _core_ . "/filters/Filter.php";
+        foreach($filters as $filter){
+            if(file_exists(_core_ . "/filters/" . $filter . ".php")){
+                include_once _core_ . "/filters/" . $filter . ".php";
+                $f = new $filter;
+                $f-> do_filter();
+                if($f->is_filtered()){
+                    return true;
+                }else{
+                    return false;
+                }
+            }else{
+                //no such filter file Exists
+                die("no such filter");
+            }
+        }
     }
 
+    /**
+     * @param $path
+     * @param $controller
+     * @param null $method
+     */
     public static function get($path, $controller, $method = null){
         self::init();
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
@@ -71,6 +92,12 @@ class Router{
         }
     }
 
+    /**
+     * @param $path
+     * @param $controller
+     * @param null $method
+     * @param null $filters
+     */
     public static function post($path, $controller, $method = null,$filters = null){
         self::init();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -80,7 +107,7 @@ class Router{
             $count = count($path_parts_array);
             if ($count == count(self::$call_parts) || ($count == count(self::$call_parts) - 1 && empty(self::$call_parts[$count]))) {
                 $true_url = true;
-                $parameter = null;
+                $parameter = [];
                 for ($i = 0; $i < $count; $i++) {
                     if (strpos($path_parts_array[$i],"{") !== false && strpos($path_parts_array[$i],"}") !== false) {
                         $parameter[$i] = str_replace("{", "", self::$call_parts[$i]);
@@ -91,7 +118,12 @@ class Router{
                     }
                 }
                 if ($true_url) {
-                    // Todo : Do a filter
+                    if($filters != null && !empty($filters)){
+                        if(!self::filter($filters)){
+                            //todo: show a page that says security filer could not be passed
+                            die("could not pass filter");
+                        }
+                    }
                     self::call($controller,$method,$parameter);
                 }
             }

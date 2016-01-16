@@ -31,7 +31,20 @@ function pad(Array $array){
  */
 function s_error_log($errno, $errstr, $errfile, $errline){
     $log = "Error num : $errno | Message : $errstr | File : $errfile in line $errline \n";
-    $file = fopen(_core_."/storage/logs/log.txt","w");
-    fwrite($file,$log);
-    fclose($file);
+    $file = _core_."/storage/logs/log.txt";
+    file_put_contents($file,$log,FILE_APPEND);
+}
+
+/**
+ * @param $type
+ * @param null $text
+ */
+function security_filter_attack_log($type,$text = null){
+    $log = date('l jS \of F Y h:i:s A')." | From IP ".$_SERVER["REMOTE_ADDR"]." | request address: ". $_SERVER["REQUEST_URI"]."  | type: ".$type;
+    if($text != null){
+        $log .= " | text".$text;
+    }
+    $log .= "\n";
+    $file = _core_."/storage/logs/security_log.txt";
+    file_put_contents($file,$log,FILE_APPEND);
 }

@@ -2,3 +2,4 @@
 *.iml
 web.xml
 log.txt
+security_log.txt
