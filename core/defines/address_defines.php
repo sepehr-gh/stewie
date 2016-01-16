@@ -51,3 +51,4 @@ define("_views_",_root_."/views");
  * _assets_ defines Stewie assets folder address
  */
 define("assets",_root_."/assets");
+

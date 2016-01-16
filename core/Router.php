@@ -11,11 +11,7 @@ class Router{
     private static $call;
     private static $call_parts;
 
-    /**
-     * Router constructor.
-     * Initialize Router class. Sets path details
-     */
-    private function init(){
+    private static function init(){
         $parse_path = parse_path();
         self::$basePath = $parse_path['base'];
         self::$call = $parse_path['call'];
