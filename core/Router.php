@@ -15,12 +15,38 @@ class Router{
      * Router constructor.
      * Initialize Router class. Sets path details
      */
-    public function init(){
+    private function init(){
         $parse_path = parse_path();
         self::$basePath = $parse_path['base'];
         self::$call = $parse_path['call'];
         self::$call_utf8 = $parse_path['call_utf8'];
         self::$call_parts = $parse_path['call_parts'];
+    }
+
+    private static function call($controller,$method,$parameter = null){
+        if (is_callable($controller)) {
+            call_user_func_array($controller, $parameter);
+        } else {
+            $file = _controllers_ . "/" . $controller . ".php";
+            if (file_exists($file) && $method != null) {
+                include_once $file;
+                $controllerClass = new $controller;
+                if(method_exists($controllerClass,$method)){
+                    $methodChecker = new ReflectionMethod($controller,$method);
+                    if($methodChecker->isStatic()){
+                        call_user_func_array([$controller, $method], $parameter);
+                    }else{
+                        call_user_func_array([$controllerClass,$method],$parameter);
+                    }
+                }
+            }else{
+                //Todo : throw new exception
+            }
+        }
+    }
+
+    private function filter($filters){
+
     }
 
     public static function get($path, $controller, $method = null){
@@ -32,10 +58,7 @@ class Router{
             $count = count($path_parts_array);
             if ($count == count(self::$call_parts) || ($count == count(self::$call_parts) - 1 && empty(self::$call_parts[$count]))) {
                 $true_url = true;
-                $parameter = null;
-                if ($count == count(self::$call_parts) + 1 && empty($path_parts_array[$count - 1])) {
-                    $count -= 1;
-                }
+                $parameter = [];
                 for ($i = 0; $i < $count; $i++) {
                     if (strpos($path_parts_array[$i],"{") !== false && strpos($path_parts_array[$i],"}") !== false) {
                         $parameter[$i] = str_replace("{", "", self::$call_parts[$i]);
@@ -46,23 +69,13 @@ class Router{
                     }
                 }
                 if ($true_url) {
-                    if (is_callable($controller)) {
-                        call_user_func_array($controller, $parameter);
-                    } else {
-                        $file = _controllers_ . "/" . $controller . ".php";
-                        if (file_exists($file) && $method != null) {
-                            include_once $file;
-                            call_user_func_array([$controller, $method], $parameter);
-                        }else{
-                            //Todo : throw new exception
-                        }
-                    }
+                    self::call($controller,$method,$parameter);
                 }
             }
         }
     }
 
-    public static function post($path, $controller, $method = null,$filter = null){
+    public static function post($path, $controller, $method = null,$filters = null){
         self::init();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $path_parts_array = explode('/', $path);
@@ -72,9 +85,6 @@ class Router{
             if ($count == count(self::$call_parts) || ($count == count(self::$call_parts) - 1 && empty(self::$call_parts[$count]))) {
                 $true_url = true;
                 $parameter = null;
-                if ($count == count(self::$call_parts) + 1 && empty($path_parts_array[$count - 1])) {
-                    $count -= 1;
-                }
                 for ($i = 0; $i < $count; $i++) {
                     if (strpos($path_parts_array[$i],"{") !== false && strpos($path_parts_array[$i],"}") !== false) {
                         $parameter[$i] = str_replace("{", "", self::$call_parts[$i]);
@@ -86,18 +96,7 @@ class Router{
                 }
                 if ($true_url) {
                     // Todo : Do a filter
-
-                    if (is_callable($controller)) {
-                        call_user_func_array($controller, $parameter);
-                    } else {
-                        $file = _controllers_ . "/" . $controller . ".php";
-                        if (file_exists($file) && $method != null) {
-                            include_once $file;
-                            call_user_func([$controller, $method], $parameter);
-                        }else{
-                            //Todo : throw new exception
-                        }
-                    }
+                    self::call($controller,$method,$parameter);
                 }
             }
         }
