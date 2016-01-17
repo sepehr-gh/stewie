@@ -4,8 +4,7 @@ class Router extends AbstractRouter{
     /**
      * @inheritDoc
      */
-    public static function get($path, $controller, $method = null)
-    {
+    public static function get($path, $controller, $method = null){
         try {
             parent::get($path, $controller, $method);
         }catch (No_Such_ControllerClass_Exception $nsc){
@@ -18,8 +17,7 @@ class Router extends AbstractRouter{
     /**
      * @inheritDoc
      */
-    public static function post($path, $controller, $method = null, $filters = null)
-    {
+    public static function post($path, $controller, $method = null, $filters = null){
         try {
         parent::post($path, $controller, $method,$filters);
         }catch (No_Such_ControllerClass_Exception $nsc){

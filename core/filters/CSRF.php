@@ -12,10 +12,12 @@ class CSRF implements Filter{
                     $this->attack_log();
                 }
             }else{
-                //todo: no csrf input ERROR
+                include_once _exceptions_ . "/filters/CSRF_NO_POST_EXCEPTION.php";
+                throw new CSRF_NO_POST_EXCEPTION();
             }
         }else{
-            //todo: no csrf session value ERROR
+            include_once _exceptions_ . "/filters/CSRF_NO_SESSION_EXCEPTION.php";
+            throw new CSRF_NO_SESSION_EXCEPTION();
         }
     }
 
@@ -30,8 +32,7 @@ class CSRF implements Filter{
     /**
      * @param boolean $is_filtered
      */
-    public function setIsFiltered($is_filtered)
-    {
+    public function setIsFiltered($is_filtered){
         $this->is_filtered = $is_filtered;
     }
 }

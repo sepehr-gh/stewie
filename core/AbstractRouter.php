@@ -1,5 +1,5 @@
 <?php
-include_once "lib/parse_path.php";
+include_once _core_ . "/lib/parse_path.php";
 
 /**
  * Class AbstractRouter
