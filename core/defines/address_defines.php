@@ -30,7 +30,7 @@ define("_controllers_",_root_."/controllers");
 /**
  * _assets_ defines Stewie developer configs folder address
  */
-define("_config_",_root_."/configs");
+define("_config_",_root_."/config");
 
 /**
  * _core_ defines Stewie core folder address

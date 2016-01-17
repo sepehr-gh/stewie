@@ -2,7 +2,7 @@
 include_once "lib/parse_path.php";
 
 /**
- * Class Router
+ * Class AbstractRouter
  * Stewie uses this class to parse url paths and show results to users
  */
 class AbstractRouter{

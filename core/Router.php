@@ -9,14 +9,9 @@ class Router extends AbstractRouter{
         try {
             parent::get($path, $controller, $method);
         }catch (No_Such_ControllerClass_Exception $nsc){
-            if(_debug_mode_){
-                echo "catched";
-                echo $nsc->getMessage();
-            }
+            stewie_exception_handler($nsc);
         }catch (No_Such_Method_Exception $nsme){
-            if(_debug_mode_){
-                echo $nsme->getMessage();
-            }
+            stewie_exception_handler($nsme);
         }
     }
 
@@ -28,20 +23,12 @@ class Router extends AbstractRouter{
         try {
         parent::post($path, $controller, $method,$filters);
         }catch (No_Such_ControllerClass_Exception $nsc){
-            if(_debug_mode_){
-                echo "catched";
-                echo $nsc->getMessage();
-            }
+            stewie_exception_handler($nsc);
         }catch (No_Such_Method_Exception $nsme){
-            if(_debug_mode_){
-                echo $nsme->getMessage();
-            }
+            stewie_exception_handler($nsme);
         }catch (No_Such_Filter_Exception $nsf){
-            if(_debug_mode_){
-                pad($nsf->getTrace());
-            }
+            stewie_exception_handler($nsf);
         }
     }
-
 
 }
