@@ -11,6 +11,8 @@ class Router extends AbstractRouter{
             stewie_exception_handler($nsc);
         }catch (No_Such_Method_Exception $nsme){
             stewie_exception_handler($nsme);
+        }catch (Exception $e){
+            stewie_exception_handler($e);
         }
     }
 
@@ -26,6 +28,8 @@ class Router extends AbstractRouter{
             stewie_exception_handler($nsme);
         }catch (No_Such_Filter_Exception $nsf){
             stewie_exception_handler($nsf);
+        }catch (Exception $e){
+            stewie_exception_handler($e);
         }
     }
 
