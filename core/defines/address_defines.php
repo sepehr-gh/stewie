@@ -38,6 +38,12 @@ define("_config_",_root_."/configs");
 define("_core_",_root_."/core");
 
 /**
+ * _core_ defines Stewie core folder address
+ */
+define("_exceptions_",_root_."/core/exceptions");
+
+
+/**
  * _module_ defines Stewie module folder address
  */
 define("_module_",_root_."/core");
