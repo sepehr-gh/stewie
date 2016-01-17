@@ -1,12 +1,12 @@
 <?php
 
-class Router extends AbstractRouter{
+class Router {
     /**
      * @inheritDoc
      */
     public static function get($path, $controller, $method = null){
         try {
-            parent::get($path, $controller, $method);
+            AbstractRouter::get($path, $controller, $method);
         }catch (No_Such_ControllerClass_Exception $nsc){
             stewie_exception_handler($nsc);
         }catch (No_Such_Method_Exception $nsme){
@@ -21,7 +21,7 @@ class Router extends AbstractRouter{
      */
     public static function post($path, $controller, $method = null, $filters = null){
         try {
-        parent::post($path, $controller, $method,$filters);
+            AbstractRouter::post($path, $controller, $method,$filters);
         }catch (No_Such_ControllerClass_Exception $nsc){
             stewie_exception_handler($nsc);
         }catch (No_Such_Method_Exception $nsme){
