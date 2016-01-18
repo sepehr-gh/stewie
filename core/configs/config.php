@@ -10,3 +10,4 @@
         error_reporting($error_types);
     }
     define("_debug_mode_",$debug_mode);
+    define("_error_types_",$error_types);

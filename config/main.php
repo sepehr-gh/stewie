@@ -10,6 +10,6 @@ $debug_mode = true;
 /*
  * $error_types :
  * in case you are wishing to display/log errors, you can set their type below.
- * default is E_ALL
+ * default is E_ALL & ~E_NOTICE
  */
-$error_types = E_ALL;
+$error_types = E_ALL & ~E_NOTICE;

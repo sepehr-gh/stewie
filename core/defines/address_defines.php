@@ -51,10 +51,10 @@ define("_module_",_root_."/core");
 /**
  * _views_ defines Stewie views folder address
  */
-define("_views_",_root_."/views");
+define("_views_",_root_."/views/");
 
 /**
  * _assets_ defines Stewie assets folder address
  */
-define("assets",_root_."/assets");
+define("_assets_",_root_."/assets");
 

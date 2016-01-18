@@ -2,7 +2,9 @@
 
 class Router {
     /**
-     * @inheritDoc
+     * @param $path
+     * @param $controller
+     * @param null $method
      */
     public static function get($path, $controller, $method = null){
         try {
@@ -17,7 +19,10 @@ class Router {
     }
 
     /**
-     * @inheritDoc
+     * @param $path
+     * @param $controller
+     * @param null $method
+     * @param null $filters
      */
     public static function post($path, $controller, $method = null, $filters = null){
         try {
