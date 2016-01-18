@@ -27,3 +27,5 @@ $error_types = E_ALL & ~E_NOTICE;
 $template_engine_class_name = "SmartStewie";
 $template_engine_implement_path = _core_."/template_engine/SmartStewie.php";
 $template_engine_config_file = _config_."/smartStewieConfigs.php";
+
+$stewie_user_packages = array();

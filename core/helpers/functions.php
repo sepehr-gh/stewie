@@ -9,7 +9,17 @@
  * use second parameter if library you are importing is not a built-in but is introduced.
  */
 function import($library,$isNotBuiltIn = false){
-
+    if(!$isNotBuiltIn){
+        include_once _core_ . "/defines/packages.php";
+        if(isset($stewie_packages[$library])){
+            include_once $stewie_packages[$library];
+        }
+    }else{
+        global $stewie_user_packages;
+        if(isset($stewie_user_packages[$library])){
+            include_once $stewie_user_packages[$library];
+        }
+    }
 }
 
 /**
@@ -17,6 +27,16 @@ function import($library,$isNotBuiltIn = false){
  * Prints Array in good format and dies
  */
 function pad(Array $array){
+    echo "<div><pre>";
+    print_r($array);
+    echo "</pre></div>";
+    die();
+}
+/**
+ * @param array $array
+ * Prints Array in good format
+ */
+function clearPrint(Array $array){
     echo "<div><pre>";
     print_r($array);
     echo "</pre></div>";
@@ -50,7 +70,7 @@ function security_filter_attack_log($type,$text = null){
 }
 
 function stewie_exception_handler(Exception $exception){
-    if(_debug_mode_){
+    if(_DEBUG_MODE_){
         echo "<div style='border:2px solid black;background-color: #ff6e66;color: #FFFFFF;font-family: sans-serif;font-weight: bold;'>".$exception->getMessage()."</div>";
         foreach($exception->getTrace() as $trace){
             echo "<div style='margin-top: 10px; background-color: #6E7075;color: #000000;font-family:'>";
