@@ -14,3 +14,5 @@ Router::post("/filter-test","FilterTestController","post","WRONGFILTER");
 Router::get("/check-error","HelloController","dehaa");
 
 Router::get("/templateTest","HelloController","templateTest");
+
+Router::get("/databaseTest","HelloController","databaseTest");

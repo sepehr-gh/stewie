@@ -157,7 +157,7 @@ class PdoWrapper extends PDO {
      *
      * @var array
      */
-    private $db_info = array();
+    private $db_info = array('host'=>MYSQL_HOST,'dbname'=>MYSQL_DATABASE_NAME,'username'=>MYSQL_DATABASE_USERNAME,'password'=>MYSQL_DATABASE_PASSWORD);
     /**
      * Set PDO valid Query operation
      *
@@ -202,7 +202,7 @@ class PdoWrapper extends PDO {
         // try catch block start
         try {
             // use native pdo class and connect
-            parent::__construct( "mysql:host=" . MYSQL_HOST . "; dbname=" . MYSQL_DATABASE_NAME ."", MYSQL_DATABASE_USERNAME, MYSQL_DATABASE_PASSWORD, array(
+            parent::__construct( "mysql:host=$host; dbname=$dbname", $username, $password, array(
                 PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"
             ) );
             // set pdo error mode silent
