@@ -10,7 +10,7 @@
  */
 function import($library,$isNotBuiltIn = false){
     if(!$isNotBuiltIn){
-        include_once _core_ . "/defines/packages.php";
+        include _core_ . "/defines/packages.php";
         if(isset($stewie_packages[$library])){
             include_once $stewie_packages[$library];
         }
@@ -71,14 +71,14 @@ function security_filter_attack_log($type,$text = null){
 
 function stewie_exception_handler(Exception $exception){
     if(_DEBUG_MODE_){
-        echo "<div style='border:2px solid black;background-color: #ff6e66;color: #FFFFFF;font-family: sans-serif;font-weight: bold;'>".$exception->getMessage()."</div>";
+        echo "<div style='padding: 5px;border:2px solid black;background-color: #ff6e66;color: #FFFFFF;font-family: sans-serif;font-weight: bold;'>".$exception->getMessage()."</div>";
         foreach($exception->getTrace() as $trace){
-            echo "<div style='margin-top: 10px; background-color: #6E7075;color: #000000;font-family:'>";
+            echo "<div style='padding: 5px;margin-top: 10px; background-color: #47B1F0;color: #000000;font-family:sans-serif'>";
             foreach($trace as $key => $value){
                 if(!is_array($value)){
                     echo $key." : " . $value."<br>";
                 }else{
-                    echo $key." : <br><blockquote>";
+                    echo $key." : <br><blockquote style='color:#FFFFFF'>";
                     foreach($value as $v){
                         echo "$v";
                     }
@@ -87,6 +87,20 @@ function stewie_exception_handler(Exception $exception){
             }
             echo "</div>";
         }
+        echo "<div style='padding: 5px;margin-top: 10px;border: 2px solid #ff4c4a; background-color: #fafafa;color: #1e1e1e;font-family:sans-serif'>";
+        echo "<h2>REQUEST DETAILS</h2>";
+        echo "<h3>\$_SERVER</h3>";
+        clearPrint($_SERVER);
+        echo "<h3>parse path</h3>";
+        import("ParsePath");
+        clearPrint(parse_path());
+        echo "<h3>Session</h3>";
+        clearPrint($_SESSION);
+        echo "<h3>POST</h3>";
+        clearPrint($_POST);
+        echo "<h3>Cookies</h3>";
+        clearPrint($_COOKIE);
+        echo "</div>";
     }else{
         s_error_log($exception->getCode(),$exception->getMessage(),$exception->getFile(),$exception->getLine());
     }

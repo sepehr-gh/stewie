@@ -12,6 +12,7 @@
     define("_DEBUG_MODE_",$debug_mode);
     define("_ERROR_TYPES_",$error_types);
     define("TEMPLATE_ENGINE_NAME",$template_engine_class_name);
+    set_exception_handler("stewie_exception_handler");
     if(isset($mysql_db_info)){
         foreach($mysql_db_info as $key => $value){
             define($key,$value);
