@@ -11,3 +11,4 @@
     }
     define("_debug_mode_",$debug_mode);
     define("_error_types_",$error_types);
+    define("TEMPLATE_ENGINE_NAME",$template_engine_class_name);

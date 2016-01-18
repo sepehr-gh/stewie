@@ -1,6 +1,6 @@
 <?php
 
-class HelloController{
+class HelloController extends BaseController{
     private $test = null;
     /**
      * HelloController constructor.
@@ -11,5 +11,10 @@ class HelloController{
 
     public function sayHello($username){
         echo "Hello ".$username."<br>".$this->test;
+    }
+
+    public function templateTest(){
+        $this->templateEngine->set("message","Welcome");
+        $this->templateEngine->display("welcome.tpl");
     }
 }

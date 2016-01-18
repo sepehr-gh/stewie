@@ -13,3 +13,17 @@ $debug_mode = true;
  * default is E_ALL & ~E_NOTICE
  */
 $error_types = E_ALL & ~E_NOTICE;
+/*
+ * In case you wish to use your own template engine, you can change below values
+ * $template_engine_class_name : exact class name of your template engine
+ * $template_engine_implement_path : address of file. Remember your class should implement Stewie default template engine interface
+ * availabe in core/template_engine/TemplateEngine.php
+ * $template_engine_config_file : in order you want to handle a config for your own template engine, you can address this config
+ * directory.
+ *
+ *
+ * ATTENTION : be aware of changing causes.
+ */
+$template_engine_class_name = "SmartStewie";
+$template_engine_implement_path = _core_."/template_engine/SmartStewie.php";
+$template_engine_config_file = _config_."/smartStewieConfigs.php";

@@ -1,5 +1,5 @@
 <?php
-include_once _core_."/lib/smarty/libs/Smarty.class.php";
+include_once _core_ . "/lib/smarty/libs/Smarty.class.php";
 
 class SmartStewie implements TemplateEngine{
     private $smarty;

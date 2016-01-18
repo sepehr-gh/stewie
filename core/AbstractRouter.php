@@ -27,6 +27,9 @@ class AbstractRouter{
             if (file_exists($file) && $method != null) {
                 include_once $file;
                 $controllerClass = new $controller;
+                $template_engine_name = TEMPLATE_ENGINE_NAME;
+                $template_engine = new $template_engine_name;
+                $controllerClass->setTemplateEngine($template_engine);
                 if(method_exists($controllerClass,$method)){
                     $methodChecker = new ReflectionMethod($controller,$method);
                     if($methodChecker->isStatic()){
