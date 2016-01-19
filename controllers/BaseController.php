@@ -4,7 +4,7 @@
 /**
  * Class BaseController
  */
-class BaseController {
+abstract class BaseController {
     /**
      * @var TemplateEngine
      */

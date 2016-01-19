@@ -12,12 +12,12 @@ function import($library,$isNotBuiltIn = false){
     if(!$isNotBuiltIn){
         include _core_ . "/defines/packages.php";
         if(isset($stewie_packages[$library])){
-            include_once $stewie_packages[$library];
+            return include_once $stewie_packages[$library];
         }
     }else{
         global $stewie_user_packages;
         if(isset($stewie_user_packages[$library])){
-            include_once $stewie_user_packages[$library];
+            return include_once $stewie_user_packages[$library];
         }
     }
 }

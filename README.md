@@ -4,7 +4,7 @@ PHP MVC FRAMEWORK
 ## Introduction
 Stewie is a simple *PHP MVC FRAMEWORK*, Developed by Sepehr Ghorbanpoor for practicing Object Oriented Designs and MVC matters!
 As all frameworks are meant to help developers, Stewie is trying to achieve the same goal.
-This framework cares about *RAM* and *PROCESSOR* and tries to not to kill them !!!! 
+This framework cares about *RAM* and *PROCESSOR* and tries not to kill them !!!!
 
 ## USAGE / EXAMPLES
 
@@ -65,6 +65,6 @@ There are config files available in *config* folder.
 
 
 **Attention**
-be aware of debug mode/debugging in all files. each one are doing individual job. 
+be aware of debug mode/debugging in all config files. each one are doing individual job. 
 
 
