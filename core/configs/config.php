@@ -3,6 +3,7 @@
     if(!isset($_SESSION['csrf'])){
         $_SESSION['csrf'] = sha1(time().$_SERVER["REMOTE_ADDR"].rand(0,time()));
     }
+    define("csrf","<input name='csrf' value='".$_SESSION['csrf']."' type='hidden'>");
     if(!$debug_mode){
         set_error_handler("s_error_log",$error_types);
         error_reporting(0);
@@ -18,3 +19,4 @@
             define($key,$value);
         }
     }
+    spl_autoload_register("AUTOLOADER");

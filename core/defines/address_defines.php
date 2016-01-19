@@ -44,9 +44,9 @@ define("_exceptions_",_root_."/core/exceptions");
 
 
 /**
- * _module_ defines Stewie module folder address
+ * _models_ defines Stewie module folder address
  */
-define("_module_",_root_."/core");
+define("_models_",_root_."/models");
 
 /**
  * _views_ defines Stewie views folder address

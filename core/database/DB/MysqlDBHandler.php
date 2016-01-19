@@ -1,5 +1,4 @@
 <?php
-
 class MysqlDBHandler implements DBHandler{
     private  $connection;
     private  function convertPersianWord($item)

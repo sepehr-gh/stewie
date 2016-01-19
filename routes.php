@@ -16,3 +16,9 @@ Router::get("/check-error","HelloController","dehaa");
 Router::get("/templateTest","HelloController","templateTest");
 
 Router::get("/databaseTest","HelloController","databaseTest");
+
+Router::get("/modelTest","HelloController","modelTest");
+
+Router::get("/get","HelloController","get");
+
+Router::post("/post","HelloController","post","CSRF");

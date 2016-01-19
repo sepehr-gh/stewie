@@ -3,7 +3,9 @@ PHP MVC FRAMEWORK
 
 ## Introduction
 Stewie is a simple *PHP MVC FRAMEWORK*, Developed by Sepehr Ghorbanpoor for practicing Object Oriented Designs and MVC matters!
+
 As all frameworks are meant to help developers, Stewie is trying to achieve the same goal.
+
 This framework cares about *RAM* and *PROCESSOR* and tries not to kill them !!!!
 
 ## USAGE / EXAMPLES
@@ -51,9 +53,16 @@ in case you are using a controller, you can simply `extend BaseController` and y
 
 ### Database
 
-right now MODEL part is not ready compeletly, but dont worry. There is a built-in "PDOWRAPPER" class available in Stewie. Just import it using `import("PdoWrapper")` and use it.
+There are several to connect to database in Smarty.
+
+#### PDOWrapper for my sql
+you can use PdoWrapper class to simply connect to a running mysql server. Just simply config `db.php` file (read more in **CONFIG** part).
+
+You can simply add `PdoWrapper` package to your controller file by writing ` import("PdoWrapper") ` above your php controller class.
 
     $db = new PdoWrapper();
+    $result = $db->select("test")->results();
+    pad($result);
 
 PdoWrapper is already configed. You can read **CONFIG** part in this documentation to know learn how to match it with your own mysql database. There is also a pdf file available with Stewie which explains `PdoWrapper` methods. Just take a look at *PHP_PDO_Class_Wrapper.pdf* 
 

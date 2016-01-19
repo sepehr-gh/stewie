@@ -5,20 +5,42 @@
  * @param String $library
  * @param bool|false $isNotBuiltIn
  *
- * imports built-in packages and helper libraries available in Stewie framework
- * use second parameter if library you are importing is not a built-in but is introduced.
  */
-function import($library,$isNotBuiltIn = false){
+function s_import($library,$isNotBuiltIn = false){
     if(!$isNotBuiltIn){
         include _core_ . "/defines/packages.php";
-        if(isset($stewie_packages[$library])){
-            return include_once $stewie_packages[$library];
+        if(isset($stewie_class_packages[$library])){
+            include $stewie_class_packages[$library];
+        }else{
+            if(strpos($library,'DBHandler') !== false){
+                include _core_."/database/DB/$library.php";
+            }
         }
     }else{
         global $stewie_user_packages;
         if(isset($stewie_user_packages[$library])){
-            return include_once $stewie_user_packages[$library];
+            include $stewie_user_packages[$library];
         }
+    }
+}
+
+
+/**
+ * @param $ModelName
+ */
+function s_model($modelName){
+    include_once _models_ . "/BaseModel.php";
+    if(file_exists(_models_ . "/" . $modelName . ".php")){
+        include_once _models_ . "/" . $modelName . ".php";
+    }
+}
+
+/**
+ * @param $controllerClassName
+ */
+function s_controller($controllerClassName){
+    if(file_exists(_controllers_ . "/" . $controllerClassName . ".php")){
+        include_once _controllers_ . "/" . $controllerClassName  . ".php";
     }
 }
 
@@ -69,6 +91,9 @@ function security_filter_attack_log($type,$text = null){
     file_put_contents($file,$log,FILE_APPEND);
 }
 
+/**
+ * @param Exception $exception
+ */
 function stewie_exception_handler(Exception $exception){
     if(_DEBUG_MODE_){
         echo "<div style='padding: 5px;border:2px solid black;background-color: #ff6e66;color: #FFFFFF;font-family: sans-serif;font-weight: bold;'>".$exception->getMessage()."</div>";
@@ -104,4 +129,13 @@ function stewie_exception_handler(Exception $exception){
     }else{
         s_error_log($exception->getCode(),$exception->getMessage(),$exception->getFile(),$exception->getLine());
     }
+}
+
+/**
+ * @param $classname
+ */
+function AUTOLOADER($classname){
+    s_import($classname);
+    s_model($classname);
+    s_controller($classname);
 }

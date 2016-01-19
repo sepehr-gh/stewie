@@ -157,7 +157,7 @@ class PdoWrapper extends PDO {
      *
      * @var array
      */
-    private $db_info = array('host'=>MYSQL_HOST,'dbname'=>MYSQL_DATABASE_NAME,'username'=>MYSQL_DATABASE_USERNAME,'password'=>MYSQL_DATABASE_PASSWORD);
+    private $db_info = array('host'=>DB_SERVER,'dbname'=>DB_DATABASE,'username'=>DB_USERNAME,'password'=>DB_PASSWORD);
     /**
      * Set PDO valid Query operation
      *

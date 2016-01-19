@@ -1,4 +1,5 @@
 <?php
+
 abstract class BaseModel{
     public function all(){
         $query = "SELECT * FROM " . $this->table;
