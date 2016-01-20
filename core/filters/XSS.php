@@ -8,15 +8,8 @@ class XSS implements Filter{
                 $_POST[$key] = htmlentities($value);
             }
         }
-        if(isset($_GET) && !empty($_GET)){
-            foreach($_GET as $key => $value){
-                $_GET[$key] = htmlentities($value);
-            }
-        }
         $this->setIsFiltered(true);
     }
-
-    public function attack_log(){}
 
     public function is_filtered(){
         return $this->is_filtered;

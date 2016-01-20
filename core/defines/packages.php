@@ -8,6 +8,7 @@ $stewie_class_packages = array(
     "RespectValidator" => _core_ . "/lib/validators/RespectValidator/RespectValidator.php",
     "DB" => _core_ . "/database/DB/DB.php",
     // Filters
+    "Filter" => _core_ . "/filters/Filter.php",
     "CSRF" => _core_ . "/filters/CSRF.php",
     "XSS" => _core_ . "/filters/XSS.php",
 );

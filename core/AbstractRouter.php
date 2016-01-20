@@ -49,7 +49,6 @@ class AbstractRouter
 
     private static function filter($filters){
         $filters = explode("|", ucwords(str_replace(" ", "", $filters)));
-        include_once _core_ . "/filters/Filter.php";
         foreach ($filters as $filter) {
             $f = new $filter;
             $f->do_filter();
