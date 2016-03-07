@@ -2,9 +2,11 @@
 PHP MVC FRAMEWORK
 
 ## Introduction
-Stewie is a simple *PHP MVC FRAMEWORK*, Developed for practicing Object Oriented Designs and MVC matters!
+Stewie is a simple *PHP MVC FRAMEWORK*, Developed by Sepehr Ghorbanpoor for practicing Object Oriented Designs and MVC matters!
 
 As all frameworks are meant to help developers, Stewie is trying to achieve the same goal.
+
+This framework cares about *RAM* and *PROCESSOR* and tries not to kill them !!!!
 
 ## USAGE / EXAMPLES
 
@@ -27,7 +29,7 @@ in case you have variable url, you can get these variable values like below :
         echo "welcome $username";
     });
 
-just put variable url part in a *{}* and add a parameter to your function.
+just simply put variable url part in a *{}* and add a parameter to your function.
 
 ### router with controller
 
@@ -41,6 +43,7 @@ This calls `sayHello` method of a controller class(&file) named `HelloController
 
 Stewie uses **Smarty Templae Engine** as its default template engine to generate view files.
 
+    <?php
     $smartStewie = new SmartStewie();
     $smartStewie->assign("message","welcome");
     $smartStewie->display("welcome.tpl");
@@ -59,7 +62,7 @@ in case you are using a controller, you can simply `extend BaseController` and y
 
 ### Database
 
-There are several ways to connect to database in Smarty.
+There are several to connect to database in Smarty.
 
 #### PDOWrapper for my sql
 
