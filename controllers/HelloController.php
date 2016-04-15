@@ -5,7 +5,7 @@ class HelloController extends BaseController{
      * HelloController constructor.
      */
     public function __construct(){
-        $this->test = "tested";
+        $this->test = "Constructor is tested";
     }
 
     public function sayHello($username){
