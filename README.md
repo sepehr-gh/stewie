@@ -110,7 +110,7 @@ There are config files available in *config* folder.
 
 
 **Attention**
-be aware of debug mode/debugging in all config files. each one are doing individual job. 
+be aware of debug mode/debugging in all config files. each one is doing individual job. 
 
 
 ##EXTERA
@@ -120,11 +120,11 @@ be aware of debug mode/debugging in all config files. each one are doing individ
 Stewie comes with two defualt filters. **XSS** which cleans htmlentites from $_POST arrays automaticly. Other filter is **csrf**
 filter which helps to prevent *csrf* attack in your application.
 
-These filters only work in ` Route::post() ` method as fourth parameter as String. you can devide filters you cant to use with ` | `. just remember all characters should be Uppercase with no space.
+These filters only work in ` Route::post() ` method as third parameter as String. you can devide filters you cant to use with ` | `. just remember all characters should be Uppercase with no space.
 
     Route::post("/login",function(){
         var_dump($_POST);
-    },null,"CSRF|XSS"}
+    },"CSRF|XSS"}
 
 **csrf** : To use this filter, you can add ` {csrf} ` to your forms (which are going to post to page). This adds hidden input with csrf as name and session value. Then filter cheks this value and if it was not right values,shows a page.
 
