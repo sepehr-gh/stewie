@@ -31,7 +31,7 @@ just put variable url part in a *{}* and add a parameter to your function.
 
 ### router with controller
 
-In case you wish to use a controller class for your application, You must know that `Route` method second parameter can also be a **controller class name** (which should be as same as controller class file) exsiting in ` /controllers ` directory. Third parameter is controller method you wish to call. Here is an example :
+In case you wish to use a controller class for your application, You must know that `Route` method second parameter can also be a **controller class name** (which should be as same as controller class file exsiting in ` /controllers ` directory) Concatenated to ** controller method name ** using ** @ ** character. Here is an example :
 
     Route::get("/hello/{username}","ControllerName@methodName");
     Route::get("/hello/{username}","HelloController@sayHello");
