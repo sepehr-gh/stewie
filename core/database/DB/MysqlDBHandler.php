@@ -12,9 +12,8 @@ class MysqlDBHandler implements DBHandler{
         }
         return $arrayParams;
     }
-    public  function open()
-    {
-        // Create a database connection only if one doesn?t already exist
+    public  function open(){
+        // Create a database connection only if one doesn't already exist
         if (!isset($this->connection)) {
             // Execute code catching potential exceptions
             try {

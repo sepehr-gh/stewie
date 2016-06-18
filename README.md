@@ -8,22 +8,22 @@ As all frameworks are meant to help developers, Stewie is trying to achieve the 
 
 ## USAGE / EXAMPLES
 
-This Explains how to use routers,controllers,and views to simply run your app with stewie version 0.5
+This Explains how to use routers,controllers,and views to simply run your app with stewie version 1.0
 
 ### router
 
-Router class has two method that could be used for routing. `get` method which handles GET method requests and pages and `post` method which handles post requests to a route.
+Route class has two method that could be used for routing. `get` method which handles GET method requests and pages and `post` method which handles post requests to a route.
 
 
-Simply you can use `Router` like below to call a function if urls match :
+Simply you can use `Route` like below to call a function if urls match :
 
-    Router::get("/",function(){
+    Route::get("/",function(){
         echo "welcome";
     });
 
 in case you have variable url, you can get these variable values like below :
 
-    Router::get("/user/{username}",function($username){
+    Route::get("/user/{username}",function($username){
         echo "welcome $username";
     });
 
@@ -31,9 +31,10 @@ just put variable url part in a *{}* and add a parameter to your function.
 
 ### router with controller
 
-In case you wish to use a controller class for your application, You must know that `Router` method second parameter can also be a **controller class name** (which should be as same as controller class file) exsiting in ` /controllers ` directory. Third parameter is controller method you wish to call. Here is an example :
+In case you wish to use a controller class for your application, You must know that `Route` method second parameter can also be a **controller class name** (which should be as same as controller class file) exsiting in ` /controllers ` directory. Third parameter is controller method you wish to call. Here is an example :
 
-    Router::get("/hello/{username}","HelloController","sayHello");
+    Route::get("/hello/{username}","ControllerName@methodName");
+    Route::get("/hello/{username}","HelloController@sayHello");
 
 This calls `sayHello` method of a controller class(&file) named `HelloController` in controllers directory. Note that variable `username` is also passed to the controller method.
 
@@ -47,7 +48,7 @@ Stewie uses **Smarty Templae Engine** as its default template engine to generate
 
 `SmartStewie` supports all *View Related* methods available in smarty template engine and is already configed.
 
-in case you are using a controller, you can simply `extend BaseController` and you'll have template engine right ready. `$this->templateEngine` gives you access to template engine.
+in case you are using a controller, you can  `extend BaseController` and you'll have template engine right ready. `$this->templateEngine` gives you access to template engine.
 
     <?php
     HomeController extends BaseController {
@@ -63,9 +64,9 @@ There are several ways to connect to database in Smarty.
 
 #### PDOWrapper for my sql
 
-You can use PdoWrapper class to simply connect to a running mysql server. Just simply config `db.php` file (read more in **CONFIG** part).
+You can use PdoWrapper class to connect to a running mysql server. Just simply config `db.php` file (read more in **CONFIG** part).
 
-You can simply add `PdoWrapper` package to your controller file by writing ` import("PdoWrapper") ` above your php controller class.
+You can add `PdoWrapper` package to your controller file by writing ` s_import("PdoWrapper") ` above your php controller class.
 
     $db = new PdoWrapper();
     $result = $db->select("test")->results();
@@ -119,9 +120,9 @@ be aware of debug mode/debugging in all config files. each one are doing individ
 Stewie comes with two defualt filters. **XSS** which cleans htmlentites from $_POST arrays automaticly. Other filter is **csrf**
 filter which helps to prevent *csrf* attack in your application.
 
-These filters only work in ` Router::post() ` method as fourth parameter as String. you can devide filters you cant to use with ` | `. just remember all characters should be Uppercase with no space.
+These filters only work in ` Route::post() ` method as fourth parameter as String. you can devide filters you cant to use with ` | `. just remember all characters should be Uppercase with no space.
 
-    Router::post("/login",function(){
+    Route::post("/login",function(){
         var_dump($_POST);
     },null,"CSRF|XSS"}
 

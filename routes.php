@@ -1,24 +1,23 @@
 <?php
-Router::get("/test/{text}",function($text){
+
+Route::get("/test/{text}",function($text){
     echo $text;
 });
-Router::get("/hello/{username}","HelloController","sayHello");
-Router::get("/",function(){
+Route::get("/hello/{username}","HelloController@sayHello");
+Route::get("/",function(){
     echo "Welcome";
 });
-Router::get("/filter-test","FilterTestController","get");
-Router::post("/filter-test","FilterTestController","post","CSRF");
+Route::get("/filter-test","FilterTestController@get");
+Route::post("/filter-test","FilterTestController@post","CSRF");
 
 //Router::post("/filter-test","FilterTestController","post","WrongFilterNameForTest");
 
-Router::get("/check-error","HelloController","dehaa");
+Route::get("/templateTest","HelloController@templateTest");
 
-Router::get("/templateTest","HelloController","templateTest");
+Route::get("/databaseTest","HelloController@databaseTest");
 
-Router::get("/databaseTest","HelloController","databaseTest");
+Route::get("/modelTest","HelloController@modelTest");
 
-Router::get("/modelTest","HelloController","modelTest");
+Route::get("/get","HelloController@get");
 
-Router::get("/get","HelloController","get");
-
-Router::post("/post","HelloController","post","CSRF");
+Route::post("/post","HelloController@post","CSRF");

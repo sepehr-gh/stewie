@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Stewie Filter Test</title>
+    <title>Stewie Filter Test | version 1</title>
 </head>
 <body>
     <form action="{_base_url_}/post" method="post">

@@ -29,3 +29,11 @@ $template_engine_implement_path = _core_."/template_engine/SmartStewie.php";
 $template_engine_config_file = _config_."/smartStewieConfigs.php";
 
 $stewie_user_packages = array();
+
+
+/*
+ * Filters might fail! Here you can set a message that will be shown if filters fail!
+ * Notice: There will be a log available in _core_."/storage/logs/security_log.txt" when a filter is not passed.
+ */
+
+define("_FILTER_FAIL_MSG_","Could not pass the filter");

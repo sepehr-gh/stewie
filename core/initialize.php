@@ -7,6 +7,6 @@ include_once $template_engine_implement_path;
 include_once $template_engine_config_file;
 include_once _config_ . "/db.php";
 include_once _core_ . "/configs/config.php";
-include_once "AbstractRouter.php";
 include_once "Router.php";
+include_once "Route.php";
 include_once _controllers_."/BaseController.php";
