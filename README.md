@@ -31,7 +31,7 @@ just put variable url part in a *{}* and add a parameter to your function.
 
 ### router with controller
 
-In case you wish to use a controller class for your application, You must know that `Route` method second parameter can also be a **controller class name** (which should be as same as controller class file exsiting in ` /controllers ` directory) Concatenated to ** controller method name ** using ** @ ** character. Here is an example :
+In case you wish to use a controller class for your application, You must know that `Route` method second parameter can also be a **controller class name** (which should be as same as controller class file exsiting in ` /controllers ` directory) Concatenated to **controller method name** using **@** character. Here is an example :
 
     Route::get("/hello/{username}","ControllerName@methodName");
     Route::get("/hello/{username}","HelloController@sayHello");
@@ -66,13 +66,13 @@ There are several ways to connect to database in Smarty.
 
 You can use PdoWrapper class to connect to a running mysql server. Just simply config `db.php` file (read more in **CONFIG** part).
 
-You can add `PdoWrapper` package to your controller file by writing ` s_import("PdoWrapper") ` above your php controller class.
+You can use `PdoWrapper` class in your controller file to use its methods.
 
     $db = new PdoWrapper();
     $result = $db->select("test")->results();
     pad($result);
 
-PdoWrapper is already configed. You can read **CONFIG** part in this documentation to know learn how to match it with your own mysql database. There is also a pdf file available with Stewie which explains `PdoWrapper` methods. Just take a look at *PHP_PDO_Class_Wrapper.pdf* 
+PdoWrapper is already configed. You can read **CONFIG** part in this documentation to know learn how to make it work with your own mysql database. There is also a pdf file available with Stewie which explains `PdoWrapper` methods. Just take a look at *PHP_PDO_Class_Wrapper.pdf* 
 
 #### DB Model
 
@@ -106,7 +106,7 @@ Here how you use it:
 
 There are config files available in *config* folder.
 
-**main** file includes base config arrays and variables that you can set according to your wish. Documentation exists in comments right above each variable. **smartStewieConfig** files has default defines for smarty template engine, configured by Stewie. You can change them as you wish (not recommended). **db** is configuration for your database.
+**main** file includes base config arrays and variables that you can set according to your wish. Documentation exists in comments right above each variable. **smartStewieConfig** files has default defines for smarty template engine, configured by Stewie. You can change them as you wish (not recommended). **db** is configuration for your database. You can change your database host address, database name,username and password in *db.php*.
 
 
 **Attention**
