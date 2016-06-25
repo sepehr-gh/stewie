@@ -46,4 +46,9 @@ class Route {
         }
     }
 
+    public static function E404($callabe){
+        self::init();
+        self::$router->setE404Call($callabe);
+    }
+
 }

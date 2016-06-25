@@ -21,3 +21,7 @@ Route::get("/modelTest","HelloController@modelTest");
 Route::get("/get","HelloController@get");
 
 Route::post("/post","HelloController@post","CSRF");
+
+Route::E404(function(){
+    echo "oops! this 404 error is set in routes!";
+});

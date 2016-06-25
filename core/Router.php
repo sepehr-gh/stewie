@@ -7,6 +7,8 @@ include_once _core_ . "/lib/parse_path.php";
  */
 class Router{
     private $address;
+    private $routeIsFound = false;
+    private $e404Call = null;
 
     public function __construct(){
         $this->address = "/".parse_path()["call_utf8"];
@@ -64,8 +66,8 @@ class Router{
                 }
             }
             if($flag){
+                $this->routeIsFound = true;
                 $this->call($callable,$parameters);
-
             }
         }
 
@@ -105,6 +107,23 @@ class Router{
     public function post($uri, $callable, $filters = null){
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $this->pathCheckAndCall($uri,$callable,$filters);
+        }
+    }
+
+    /**
+     * @param null $e404Call
+     */
+    public function setE404Call($e404Call){
+        $this->e404Call = $e404Call;
+    }
+
+    public function __destruct(){
+        if($this->routeIsFound == false){
+            if($this->e404Call != null){
+                $this->call($this->e404Call);
+            }else{
+                echo "<h3>404! page not found! </h3>";
+            }
         }
     }
 }

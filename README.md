@@ -38,6 +38,18 @@ In case you wish to use a controller class for your application, You must know t
 
 This calls `sayHello` method of a controller class(&file) named `HelloController` in controllers directory. Note that variable `username` is also passed to the controller method.
 
+### Page not found error
+
+You might want to show special page to user when page is not found like 404 error pages! you can have a controller or a function that handles it!
+
+    Route::E404("ErrorPagesController@error404");
+
+or
+
+    Route::E404(function(){
+        echo "oops!";
+    });
+
 ### view
 
 Stewie uses **Smarty Templae Engine** as its default template engine to generate view files.
